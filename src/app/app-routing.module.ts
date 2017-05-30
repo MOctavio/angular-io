@@ -5,7 +5,7 @@ import {HomeComponent} from './home.component';
 
 const appRoutes: Routes= [
   {path: '', component: HomeComponent},
-  {path: 'users', loadChildren: './usrs/users.modules#UsersModule'}
+  {path: 'users', loadChildren: './users/users.module#UsersModule'}
 ];
 
 @NgModule({
