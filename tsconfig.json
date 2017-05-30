@@ -1,6 +1,13 @@
 {
-    "compilerOptions": {
-        "experimentalDecorators": true,
-        "allowJs": true
-    }
+  "compilerOptions": {
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "es5",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "target": "es5"
+  }
 }
