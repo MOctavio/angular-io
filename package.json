@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack-dev-server --inline --progress --config config/webpack.config.dev.js",
-    "build:prod": "del-cli dist && ngc -p tsconfig.aot.json && ngc -p tsconfig.aot.json && webpack --bail --progress --config config/webpack.config.prod.js && del-cli src/app/**/*.js src/app/**/*.ngfactory.ts src/app/**/*.js.map src/app/**/*.shim.ts src/app/**/*.ngsummary.json src/app/**/*.ngstyle.ts dist/app",
-    "serve": "node config/live-server.config.js"
+    "start": "webpack-dev-server --inline --progress --config config/webpack.config.dev.js",
+    "build": "del-cli dist && ngc -p tsconfig.aot.json && webpack --bail --progress --config config/webpack.config.prod.js && del-cli src/**/*.js src/app/**/*.js.map src/**/*.json src/**/*.ngfactory.ts src/**/*.ngstyle.ts",
+    "build:start": "node config/live-server.config.js",
+    "clean": "del-cli src/**/*.js src/app/**/*.js.map src/**/*.json src/**/*.ngfactory.ts src/**/*.ngstyle.ts"
   },
   "repository": {
     "type": "git",
