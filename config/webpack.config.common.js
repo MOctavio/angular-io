@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const Path = require('./path-helper');
+
 module.exports = {
   entry: './src/app/main.ts',
   resolve: {
