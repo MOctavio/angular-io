@@ -1,21 +1,36 @@
+const Webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const Path = require('./path-helper');
+const { Path } = require('./path-helper');
 
 module.exports = {
-  entry: './src/app/main.ts',
+  entry: {
+    main: './src/main.ts'
+  },
   resolve: {
     extensions: [
       '.js', '.ts'
+    ],
+    modules: [
+      Path.ROOT,
+      Path.NODE_MODULES
     ]
+  },
+  output: {
+    path: Path.DIST,
+    publicPath: '/',
+    filename: '[name].[hash].js'
   },
   module: {
     rules: [{
+      test: /\.js$/,
+      exclude: ['./src/main.js']
+    }, {
       test: /\.html$/,
       loader: 'html-loader'
     }, {
       test: /\.(css)$/,
-      use: ['raw-loader']
+      loader: 'raw-loader'
     }, {
       test: /\.(scss)$/,
       use: [
@@ -37,6 +52,16 @@ module.exports = {
     exprContextCritical: false
   },
   plugins: [new HtmlWebpackPlugin({
-    template: 'src/index.html'
-  })]
+      template: Path.SRC + '/index.html',
+      filename: 'index.html',
+      inject: 'body'
+    }),
+    new Webpack.optimize.CommonsChunkPlugin({
+      name: ['main', 'vendor'],
+      minChunks(module) {
+        let context = module.context;
+        return context && context.indexOf('node_modules') >= 0;
+      },
+    })
+  ]
 };

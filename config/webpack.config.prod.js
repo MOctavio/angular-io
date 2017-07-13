@@ -1,16 +1,11 @@
 const Webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
-const Path = require('./path-helper');
 const commonConfig = require('./webpack.config.common');
 
 module.exports = webpackMerge(commonConfig, {
-  entry: Path.getPathFor('src/main.aot.ts'),
-  output: {
-    path: Path.getPathFor('dist'),
-    publicPath: '/',
-    filename: '[hash].js',
-    chunkFilename: '[id].[hash].chunk.js'
+  entry: {
+    main: './src/main.aot.ts'
   },
   module: {
     rules: [{

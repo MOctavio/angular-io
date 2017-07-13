@@ -1,12 +1,12 @@
 {
   "name": "angular-io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Starter Angular Project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --inline --progress --config config/webpack.config.dev.js",
-    "build": "del-cli dist && ngc -p tsconfig.aot.json && webpack --bail --progress --config config/webpack.config.prod.js && del-cli src/**/*.js src/app/**/*.js.map src/**/*.json src/**/*.ngfactory.ts src/**/*.ngstyle.ts",
+    "build": "del-cli dist && ngc -p tsconfig.aot.json && webpack --bail --progress --config config/webpack.config.prod.js && yarn run clean",
     "build:start": "node config/live-server.config.js",
     "clean": "del-cli src/**/*.js src/app/**/*.js.map src/**/*.json src/**/*.ngfactory.ts src/**/*.ngstyle.ts"
   },
